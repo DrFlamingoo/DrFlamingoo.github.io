@@ -1,1 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="DrFlamingoo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="DrFlamingoo.github.io/" rel="alternate" type="text/html" /><updated>2025-01-31T22:38:16+01:00</updated><id>DrFlamingoo.github.io/feed.xml</id><title type="html">Flamin’ Goo</title><subtitle>disconnected notes | unsolicited suggestions</subtitle></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="DrFlamingoo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="DrFlamingoo.github.io/" rel="alternate" type="text/html" /><updated>2025-01-31T23:26:58+01:00</updated><id>DrFlamingoo.github.io/feed.xml</id><title type="html">Flamin’ Goo</title><subtitle>disconnected notes | unsolicited suggestions</subtitle><entry><title type="html">Managing Photography Images with ExifTools</title><link href="DrFlamingoo.github.io/2025/01/31/managing-photography-images-with-exiftools.html" rel="alternate" type="text/html" title="Managing Photography Images with ExifTools" /><published>2025-01-31T00:00:00+01:00</published><updated>2025-01-31T00:00:00+01:00</updated><id>DrFlamingoo.github.io/2025/01/31/managing-photography-images-with-exiftools</id><content type="html" xml:base="DrFlamingoo.github.io/2025/01/31/managing-photography-images-with-exiftools.html"><![CDATA[<p>By now, I have two Canon DSLR and one Canon SLR bodies, and have accumulated about 100k photos.
+There have been multiple strategies to manage this collection  in the last 13 years.
+In fact, much of my hardware exists in order to host the files.</p>
+
+<p>Lately, great self-hosting solutions to access your photos online have been created, and after some experimenting I have landed on <a href="https://www.immich.app">immich</a>.
+Here, I include my DSLR archive as an external library - immich does not care for the layout, and I can have it the way I like it.</p>
+
+<p>In order to import to the DSLR archive, I use something like the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exiftool <span class="se">\</span>
+	<span class="nt">-verbose</span> <span class="se">\</span>
+	<span class="nt">-recurse</span> <span class="se">\</span>
+	<span class="nt">-dateFormat</span> <span class="s1">'%Y/%Y-%m-%d_%H-%M-%S'</span> <span class="se">\</span>
+	<span class="s1">'-FileName&lt;${model}/${CreateDate} - ${model} - ${FileName;s/[I_]MG_//;s/[.](CR2|JPG)//;}.%le'</span> <span class="se">\</span>
+	/source/path/ <span class="se">\</span>
+	/archive/path/
+</code></pre></div></div>
+
+<p>This copies all files found in <code class="language-plaintext highlighter-rouge">/source/path/</code> to the <code class="language-plaintext highlighter-rouge">/archive/path</code>, creating a folder hierarcy of <code class="language-plaintext highlighter-rouge">/archive/path/$model/$year/</code> and renaming the files to include creation date, the camera model as well as the running number.</p>
+
+<p>Neat.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[By now, I have two Canon DSLR and one Canon SLR bodies, and have accumulated about 100k photos. There have been multiple strategies to manage this collection in the last 13 years. In fact, much of my hardware exists in order to host the files.]]></summary></entry></feed>
