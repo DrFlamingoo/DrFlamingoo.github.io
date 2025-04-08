@@ -1,5 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="DrFlamingoo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="DrFlamingoo.github.io/" rel="alternate" type="text/html" /><updated>2025-01-31T23:26:58+01:00</updated><id>DrFlamingoo.github.io/feed.xml</id><title type="html">Flamin’ Goo</title><subtitle>disconnected notes | unsolicited suggestions</subtitle><entry><title type="html">Managing Photography Images with ExifTools</title><link href="DrFlamingoo.github.io/2025/01/31/managing-photography-images-with-exiftools.html" rel="alternate" type="text/html" title="Managing Photography Images with ExifTools" /><published>2025-01-31T00:00:00+01:00</published><updated>2025-01-31T00:00:00+01:00</updated><id>DrFlamingoo.github.io/2025/01/31/managing-photography-images-with-exiftools</id><content type="html" xml:base="DrFlamingoo.github.io/2025/01/31/managing-photography-images-with-exiftools.html"><![CDATA[<p>By now, I have two Canon DSLR and one Canon SLR bodies, and have accumulated about 100k photos.
-There have been multiple strategies to manage this collection  in the last 13 years.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="DrFlamingoo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="DrFlamingoo.github.io/" rel="alternate" type="text/html" /><updated>2025-04-08T22:21:12+02:00</updated><id>DrFlamingoo.github.io/feed.xml</id><title type="html">Flamin’ Goo</title><subtitle>disconnected notes | unsolicited suggestions</subtitle><entry><title type="html">New Desktop</title><link href="DrFlamingoo.github.io/2025/04/08/new-desktop.html" rel="alternate" type="text/html" title="New Desktop" /><published>2025-04-08T00:00:00+02:00</published><updated>2025-04-08T00:00:00+02:00</updated><id>DrFlamingoo.github.io/2025/04/08/new-desktop</id><content type="html" xml:base="DrFlamingoo.github.io/2025/04/08/new-desktop.html"><![CDATA[<p>Building a new desktop computer, it was clear from the start, that I would never run Windows on that machine.  It was also clear, that a fairly powerful AMD CPU would power the system.  So I did the only sensible thing, and installed a gaming VM in a Proxmox Host.
+<!--more--></p>
+
+<p>My experience was a little bit of frickling, and a lot of good results, but let’s start at zero:</p>
+
+<h2 id="a-non-windows-gaming-machine">A Non-Windows gaming machine?</h2>
+
+<p>All my notebooks run Linux, usually Arch Linux, and have done so for the last 15 years.  At the same time, all my notebooks are notoriously underpowered, and would barely cope with games.  So I played on my desktop Windows computer, always dreading the switch to Linux gaming.</p>
+
+<p>So, while I had a clear goal set, it took a few years and new hardware to give me the push to at least try.</p>
+
+<p>For the initial test of gaming on Linux, I searched for the shiniest Linux distro I could find, that also marketed towards Gamers. I settled for <a href="https://system76.com/pop/">Pop!_OS</a>, and installed it on an SSD for funsies.
+And it worked super well.</p>
+
+<p>I am not a big fan of Ubuntu or flatpak, but if all I do is some gaming, why not? Well, that’s how they get you :-)</p>
+
+<h2 id="a-non-windows-gaming-vm">A Non-Windows gaming VM?</h2>
+
+<p>Now, with my Linux Distro <em>of choice</em>, I was ready to test if I could move the distro to a virtual machine hosted on Proxmox. This would give me the chance to utilize the CPU (and GPU, maybe) in more than one way. Coming from a platform that was mostly CPU bound, 24 core out of 36 for gaming is luxury.</p>
+
+<p>With Proxmox v8.3.5, even the PCI pass-through was super easy. There was a bit of confusion when picking the right approach, and there will be tests for alternatives.</p>
+
+<p>For my Nvidia 970 GTX, these were the possible strategies</p>
+
+<ol>
+  <li>VM &amp; vGPU - requires registering into some Nvidia program, but the GPU (don’t even know if mine qualifies) would be shareable between VMs</li>
+  <li>VM &amp; PCI pass-through - requires the proper IOMMU kernel modules, and some straightforward configuration in the Proxmox GUI, but the GPU is then bound to a single VM</li>
+  <li>LXC &amp; ??? - allows sharing the GPU with other workloads.</li>
+</ol>
+
+<p>For me, the third option sounds perfect, but I have not figured out how to create a LXC template container for Pop!_OS, and installing on top of a previous Ubuntu image is unsupported. So, I went with option (2).</p>
+
+<h2 id="moving-steam-libraries--flatpak-magic">Moving Steam Libraries / Flatpak magic</h2>
+
+<p>Flatpak isolates applications from the rest of the system in sandboxes.  So, to move the Steam library base directory off my home directory, access and permissions to the target location needs to be explicitly granted.  The easiest way to do so, is using the software <code class="language-plaintext highlighter-rouge">Flatseal</code>.</p>
+
+<p>So I</p>
+<ol>
+  <li>mounted a hard drive at <code class="language-plaintext highlighter-rouge">/mnt/sdd</code>,</li>
+  <li>allowed the Steam sandbox access to <code class="language-plaintext highlighter-rouge">/mnt/sdd/__games/steam-library</code>,</li>
+  <li>configured Steam to expect a library in that folder,</li>
+  <li>and finally moved existing game data to that very folder (from the <a href="#a_non_windows_gaming_machine">first try</a>).</li>
+</ol>
+
+<p>Games were detected automatically, saving a few 100 GB of data volume. Yay!</p>
+
+<h2 id="mounting-a-hard-drive-in-vms">“Mounting” a Hard drive in VMs</h2>
+
+<p>So - how to actually mount a drive in a VM? Usually, there is no way to do this except for file sharing over network (NFS or samba), but I did not want to go down that road.</p>
+
+<p>Instead, one can simply pass the whole PCI device through to the VM, from where we then can mount it very easily.</p>
+
+<h2 id="the-future">The future</h2>
+
+<p>I would love to share the graphics card between VMs or containers, but the current setup does not allow for that. I do like the idea of an LXC container for gaming (also sharing the Proxmox Kernel, maybe not the best idea?!), but for me and my limited time there is no way to figure out how to build a non-standard LXC template.</p>
+
+<p>So, maybe run a more standard distro for gaming? Yes, but I am hooked on the ease of Pop!_OS for now.  Maybe this is sth to try if I finally do buy a new graphics card :)</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Building a new desktop computer, it was clear from the start, that I would never run Windows on that machine. It was also clear, that a fairly powerful AMD CPU would power the system. So I did the only sensible thing, and installed a gaming VM in a Proxmox Host.]]></summary></entry><entry><title type="html">Managing Photography Images with ExifTools</title><link href="DrFlamingoo.github.io/2025/01/31/managing-photography-images-with-exiftools.html" rel="alternate" type="text/html" title="Managing Photography Images with ExifTools" /><published>2025-01-31T00:00:00+01:00</published><updated>2025-01-31T00:00:00+01:00</updated><id>DrFlamingoo.github.io/2025/01/31/managing-photography-images-with-exiftools</id><content type="html" xml:base="DrFlamingoo.github.io/2025/01/31/managing-photography-images-with-exiftools.html"><![CDATA[<p>By now, I have two Canon DSLR and one Canon SLR bodies, and have accumulated about 100k photos.
+There have been multiple strategies to manage this collection in the last 13 years.
 In fact, much of my hardware exists in order to host the files.</p>
 
 <p>Lately, great self-hosting solutions to access your photos online have been created, and after some experimenting I have landed on <a href="https://www.immich.app">immich</a>.
