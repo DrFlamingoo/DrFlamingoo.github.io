@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>New Desktop | Flamin’ Goo</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="New Desktop" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Building a new desktop computer, it was clear from the start, that I would never run Windows on that machine. It was also clear, that a fairly powerful AMD CPU would power the system. So I did the only sensible thing, and installed a gaming VM in a Proxmox Host." />
+<meta property="og:description" content="Building a new desktop computer, it was clear from the start, that I would never run Windows on that machine. It was also clear, that a fairly powerful AMD CPU would power the system. So I did the only sensible thing, and installed a gaming VM in a Proxmox Host." />
+<link rel="canonical" href="DrFlamingoo.github.io/2025/04/08/new-desktop.html" />
+<meta property="og:url" content="DrFlamingoo.github.io/2025/04/08/new-desktop.html" />
+<meta property="og:site_name" content="Flamin’ Goo" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-04-08T00:00:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="New Desktop" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-04-08T00:00:00+02:00","datePublished":"2025-04-08T00:00:00+02:00","description":"Building a new desktop computer, it was clear from the start, that I would never run Windows on that machine. It was also clear, that a fairly powerful AMD CPU would power the system. So I did the only sensible thing, and installed a gaming VM in a Proxmox Host.","headline":"New Desktop","mainEntityOfPage":{"@type":"WebPage","@id":"DrFlamingoo.github.io/2025/04/08/new-desktop.html"},"url":"DrFlamingoo.github.io/2025/04/08/new-desktop.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="DrFlamingoo.github.io/feed.xml" title="Flamin&apos; Goo" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Flamin&#39; Goo</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">New Desktop</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-04-08T00:00:00+02:00" itemprop="datePublished">Apr 8, 2025
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Building a new desktop computer, it was clear from the start, that I would never run Windows on that machine.  It was also clear, that a fairly powerful AMD CPU would power the system.  So I did the only sensible thing, and installed a gaming VM in a Proxmox Host.
+<!--more--></p>
+
+<p>My experience was a little bit of frickling, and a lot of good results, but let’s start at zero:</p>
+
+<h2 id="a-non-windows-gaming-machine">A Non-Windows gaming machine?</h2>
+
+<p>All my notebooks run Linux, usually Arch Linux, and have done so for the last 15 years.  At the same time, all my notebooks are notoriously underpowered, and would barely cope with games.  So I played on my desktop Windows computer, always dreading the switch to Linux gaming.</p>
+
+<p>So, while I had a clear goal set, it took a few years and new hardware to give me the push to at least try.</p>
+
+<p>For the initial test of gaming on Linux, I searched for the shiniest Linux distro I could find, that also marketed towards Gamers. I settled for <a href="https://system76.com/pop/">Pop!_OS</a>, and installed it on an SSD for funsies.
+And it worked super well.</p>
+
+<p>I am not a big fan of Ubuntu or flatpak, but if all I do is some gaming, why not? Well, that’s how they get you :-)</p>
+
+<h2 id="a-non-windows-gaming-vm">A Non-Windows gaming VM?</h2>
+
+<p>Now, with my Linux Distro <em>of choice</em>, I was ready to test if I could move the distro to a virtual machine hosted on Proxmox. This would give me the chance to utilize the CPU (and GPU, maybe) in more than one way. Coming from a platform that was mostly CPU bound, 24 core out of 36 for gaming is luxury.</p>
+
+<p>With Proxmox v8.3.5, even the PCI pass-through was super easy. There was a bit of confusion when picking the right approach, and there will be tests for alternatives.</p>
+
+<p>For my Nvidia 970 GTX, these were the possible strategies</p>
+
+<ol>
+  <li>VM &amp; vGPU - requires registering into some Nvidia program, but the GPU (don’t even know if mine qualifies) would be shareable between VMs</li>
+  <li>VM &amp; PCI pass-through - requires the proper IOMMU kernel modules, and some straightforward configuration in the Proxmox GUI, but the GPU is then bound to a single VM</li>
+  <li>LXC &amp; ??? - allows sharing the GPU with other workloads.</li>
+</ol>
+
+<p>For me, the third option sounds perfect, but I have not figured out how to create a LXC template container for Pop!_OS, and installing on top of a previous Ubuntu image is unsupported. So, I went with option (2).</p>
+
+<h2 id="moving-steam-libraries--flatpak-magic">Moving Steam Libraries / Flatpak magic</h2>
+
+<p>Flatpak isolates applications from the rest of the system in sandboxes.  So, to move the Steam library base directory off my home directory, access and permissions to the target location needs to be explicitly granted.  The easiest way to do so, is using the software <code class="language-plaintext highlighter-rouge">Flatseal</code>.</p>
+
+<p>So I</p>
+<ol>
+  <li>mounted a hard drive at <code class="language-plaintext highlighter-rouge">/mnt/sdd</code>,</li>
+  <li>allowed the Steam sandbox access to <code class="language-plaintext highlighter-rouge">/mnt/sdd/__games/steam-library</code>,</li>
+  <li>configured Steam to expect a library in that folder,</li>
+  <li>and finally moved existing game data to that very folder (from the <a href="#a_non_windows_gaming_machine">first try</a>).</li>
+</ol>
+
+<p>Games were detected automatically, saving a few 100 GB of data volume. Yay!</p>
+
+<h2 id="mounting-a-hard-drive-in-vms">“Mounting” a Hard drive in VMs</h2>
+
+<p>So - how to actually mount a drive in a VM? Usually, there is no way to do this except for file sharing over network (NFS or samba), but I did not want to go down that road.</p>
+
+<p>Instead, one can simply pass the whole PCI device through to the VM, from where we then can mount it very easily.</p>
+
+<h2 id="the-future">The future</h2>
+
+<p>I would love to share the graphics card between VMs or containers, but the current setup does not allow for that. I do like the idea of an LXC container for gaming (also sharing the Proxmox Kernel, maybe not the best idea?!), but for me and my limited time there is no way to figure out how to build a non-standard LXC template.</p>
+
+<p>So, maybe run a more standard distro for gaming? Yes, but I am hooked on the ease of Pop!_OS for now.  Maybe this is sth to try if I finally do buy a new graphics card :)</p>
+
+  </div><a class="u-url" href="/2025/04/08/new-desktop.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Flamin&#39; Goo</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Flamin&#39; Goo</li><li><a class="u-email" href="mailto:DrFlamingoo@dmjk.net">DrFlamingoo@dmjk.net</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/DrFlamingoo"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">DrFlamingoo</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>disconnected notes | unsolicited suggestions</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
