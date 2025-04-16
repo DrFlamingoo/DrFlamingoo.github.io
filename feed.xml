@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="DrFlamingoo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="DrFlamingoo.github.io/" rel="alternate" type="text/html" /><updated>2025-04-08T22:21:12+02:00</updated><id>DrFlamingoo.github.io/feed.xml</id><title type="html">Flamin’ Goo</title><subtitle>disconnected notes | unsolicited suggestions</subtitle><entry><title type="html">New Desktop</title><link href="DrFlamingoo.github.io/2025/04/08/new-desktop.html" rel="alternate" type="text/html" title="New Desktop" /><published>2025-04-08T00:00:00+02:00</published><updated>2025-04-08T00:00:00+02:00</updated><id>DrFlamingoo.github.io/2025/04/08/new-desktop</id><content type="html" xml:base="DrFlamingoo.github.io/2025/04/08/new-desktop.html"><![CDATA[<p>Building a new desktop computer, it was clear from the start, that I would never run Windows on that machine.  It was also clear, that a fairly powerful AMD CPU would power the system.  So I did the only sensible thing, and installed a gaming VM in a Proxmox Host.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="DrFlamingoo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="DrFlamingoo.github.io/" rel="alternate" type="text/html" /><updated>2025-04-16T23:22:39+02:00</updated><id>DrFlamingoo.github.io/feed.xml</id><title type="html">Flamin’ Goo</title><subtitle>disconnected notes | unsolicited suggestions</subtitle><entry><title type="html">Migrate a LXC’s rootfs to BTRFS</title><link href="DrFlamingoo.github.io/2025/04/16/migrate-a-lxcs-rootfs-to-btrfs.html" rel="alternate" type="text/html" title="Migrate a LXC’s rootfs to BTRFS" /><published>2025-04-16T00:00:00+02:00</published><updated>2025-04-16T00:00:00+02:00</updated><id>DrFlamingoo.github.io/2025/04/16/migrate-a-lxcs-rootfs-to-btrfs</id><content type="html" xml:base="DrFlamingoo.github.io/2025/04/16/migrate-a-lxcs-rootfs-to-btrfs.html"><![CDATA[<p>Just how convenient would it be, if Proxmox containers would use a BTRFS subvolume as a rootfs?  Snapshot, Backups, etc.–everything would be super easy.</p>
+
+<p>But, installing Proxmox on a BTRFS disk is not enough, one has to use the command line to create a LXC container and specify BTRFS as the root filesystem.  Well, I learned about that, when ten containers were already up and running.</p>
+
+<p>This post explores how to migrate the rootfs of an existing LXC container from a raw image (inside: ext4 filesystem) to a btrfs subvolume.  It assumes that Proxmox is installed with the BTRFS disk option, so YMMV.</p>
+
+<h2 id="step-by-step">Step-by-step</h2>
+
+<p>If your container already exists, migration of its rootfs is actually easy and straightforward. In the following, replace <code class="language-plaintext highlighter-rouge">XXX</code> with the container ID.</p>
+
+<ol>
+  <li>Shut down the LXC container.</li>
+  <li>Find your current rootfs. In case it resides in <code class="language-plaintext highlighter-rouge">local-btrfs</code> you should find it under <code class="language-plaintext highlighter-rouge">/var/lib/pve/local-btrfs/images/XXX/vm-XXX-disk-0/disk.raw</code>. This raw image file contains the <code class="language-plaintext highlighter-rouge">ext4</code> root filesystem of your container.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ RAW_DISC_PATH</span><span class="o">=</span>/var/lib/pve/local-btrfs/images/XXX/vm-XXX-disk-0/disk.raw
+</code></pre></div>    </div>
+  </li>
+  <li>Mount the root filesystem (<a href="https://forum.proxmox.com/threads/how-do-i-mount-a-raw-image.43186/">this forum thread</a> discusses how to do that in detail).
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>losetup <span class="nt">--partscan</span> /dev/loopXXX <span class="k">${</span><span class="nv">RAW_DISC_PATH</span><span class="k">}</span>
+<span class="nv">$ RAW_DISC_MNT</span><span class="o">=</span>/var/lib/pve/local-btrfs/images/XXX/mnt-raw
+<span class="nv">$ </span>mount /dev/loopXXX <span class="k">${</span><span class="nv">RAW_DISC_MNT</span><span class="k">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create the replacement btrfs filesystem.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ BTRFS_SUBVOL</span><span class="o">=</span>/var/lib/pve/local-btrfs/images/XXX/subvol-XXX-disk-0.subvol
+<span class="nv">$ </span>btrfs subvol create <span class="k">${</span><span class="nv">BTRFS_SUBVOL</span><span class="k">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Copy the file contents from the mounted raw disk to the BTRFS subvolume, and then unmount the raw disk.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rsync <span class="nt">-avz</span> <span class="k">${</span><span class="nv">RAW_DISC_MNT</span><span class="k">}</span>/<span class="k">*</span> <span class="k">${</span><span class="nv">BTRFS_SUBVOL</span><span class="k">}</span>/
+<span class="nv">$ </span>umount <span class="k">${</span><span class="nv">RAW_DISC_MNT</span><span class="k">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Update the config <code class="language-plaintext highlighter-rouge">/etc/pve/lxc/XXX.conf</code>.
+    <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-rootfs: local-btrfs:XXX/vm-XXX-disk-0.raw,size=6G
+</span><span class="gi">+rootfs: local-btrfs:XXX/subvol-XXX-disk-0.subvol,size=6G
+</span></code></pre></div>    </div>
+  </li>
+  <li>Start up your container and clean up the old root disk.</li>
+</ol>
+
+<p>And everything should just work :)</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Just how convenient would it be, if Proxmox containers would use a BTRFS subvolume as a rootfs? Snapshot, Backups, etc.–everything would be super easy.]]></summary></entry><entry><title type="html">New Desktop</title><link href="DrFlamingoo.github.io/2025/04/08/new-desktop.html" rel="alternate" type="text/html" title="New Desktop" /><published>2025-04-08T00:00:00+02:00</published><updated>2025-04-08T00:00:00+02:00</updated><id>DrFlamingoo.github.io/2025/04/08/new-desktop</id><content type="html" xml:base="DrFlamingoo.github.io/2025/04/08/new-desktop.html"><![CDATA[<p>Building a new desktop computer, it was clear from the start, that I would never run Windows on that machine.  It was also clear, that a fairly powerful AMD CPU would power the system.  So I did the only sensible thing, and installed a gaming VM in a Proxmox Host.
 <!--more--></p>
 
 <p>My experience was a little bit of frickling, and a lot of good results, but let’s start at zero:</p>
