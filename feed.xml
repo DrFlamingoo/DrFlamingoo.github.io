@@ -4,7 +4,7 @@
   <id>https://drflamingoo.github.io/</id>
   <title>The Flamingoo</title>
   <subtitle>personal docs &amp; projects</subtitle>
-  <updated>2026-11-02T09:48:49+01:00</updated>
+  <updated>2026-11-02T10:18:58+01:00</updated>
   <author>
     <name>DrFlamingoo</name>
     <uri>https://drflamingoo.github.io/</uri>
@@ -17,6 +17,30 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Pimp My moOde</title>
+    <link href="https://drflamingoo.github.io/posts/pimp-my-moode/" rel="alternate" type="text/html" title="Pimp My moOde" />
+    <published>2026-11-02T00:00:00+01:00</published>
+  
+    <updated>2026-11-02T00:00:00+01:00</updated>
+  
+    <id>https://drflamingoo.github.io/posts/pimp-my-moode/</id>
+    <content type="text/html" src="https://drflamingoo.github.io/posts/pimp-my-moode/" />
+    <author>
+      <name>dmjk</name>
+    </author>
+
+  
+    
+    <category term="Projects" />
+    
+  
+
+  <summary>I’ve been running moOde on a trusty RaspberryPi Zero W plus the HiFiBerry DAC+ for ages. When I found out that the RPi0 is now unsupported by ArchlinuxARM, I got curious and realized that moOde also dropped support for it in the latest updates. Sure sign that an update to the RPi0 @ gen2 is in order :)  Migrating was a breeze, since there is little to no configuration needed for moOde. However,...</summary>
+
+  </entry>
 
   
   <entry>

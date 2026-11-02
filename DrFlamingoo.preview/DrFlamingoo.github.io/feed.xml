@@ -1,0 +1,119 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://drflamingoo.github.io/</id>
+  <title>The Flamingoo</title>
+  <subtitle>personal docs &amp; projects</subtitle>
+  <updated>2026-11-02T09:48:49+01:00</updated>
+  <author>
+    <name>DrFlamingoo</name>
+    <uri>https://drflamingoo.github.io/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://drflamingoo.github.io/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="https://drflamingoo.github.io/"/>
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <rights> © 2026 DrFlamingoo </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>Proper BTRFS root partition on Proxmox</title>
+    <link href="https://drflamingoo.github.io/posts/proper-btrfs-root-partition-on-proxmox/" rel="alternate" type="text/html" title="Proper BTRFS root partition on Proxmox" />
+    <published>2025-04-25T12:00:00+02:00</published>
+  
+    <updated>2025-04-25T12:00:00+02:00</updated>
+  
+    <id>https://drflamingoo.github.io/posts/proper-btrfs-root-partition-on-proxmox/</id>
+    <content type="text/html" src="https://drflamingoo.github.io/posts/proper-btrfs-root-partition-on-proxmox/" />
+    <author>
+      <name>dmjk</name>
+    </author>
+
+  
+    
+    <category term="Homelab" />
+    
+  
+
+  <summary>Selecting BTRFS as the root filesystem during the Proxmox install, will give you exactly that–Proxmox installed in the root (/) volume of the btrfs partition. Being used to be able to choose my own volume / subvolume layout, I much prefer a tidier structure, where the rootfs is nested in a neat folder structure.   /btrfs_root (/)   +-- __current/   |  +-- rootfs   |  +-- home   +-- __snapshots/...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Migrate a LXC's rootfs to BTRFS</title>
+    <link href="https://drflamingoo.github.io/posts/migrate-a-lxcs-rootfs-to-btrfs/" rel="alternate" type="text/html" title="Migrate a LXC&amp;apos;s rootfs to BTRFS" />
+    <published>2025-04-16T12:00:00+02:00</published>
+  
+    <updated>2025-04-16T12:00:00+02:00</updated>
+  
+    <id>https://drflamingoo.github.io/posts/migrate-a-lxcs-rootfs-to-btrfs/</id>
+    <content type="text/html" src="https://drflamingoo.github.io/posts/migrate-a-lxcs-rootfs-to-btrfs/" />
+    <author>
+      <name>dmjk</name>
+    </author>
+
+  
+    
+    <category term="Homelab" />
+    
+  
+
+  <summary>Just how convenient would it be, if Proxmox containers would use a BTRFS subvolume as a rootfs?  Snapshot, Backups, etc.–everything would be super easy.  But, installing Proxmox on a BTRFS disk is not enough, one has to use the command line to create a LXC container and specify BTRFS as the root filesystem1.  Well, I learned about that, when ten containers were already up and running.  This pos...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>New Desktop</title>
+    <link href="https://drflamingoo.github.io/posts/new-desktop/" rel="alternate" type="text/html" title="New Desktop" />
+    <published>2025-04-08T12:00:00+02:00</published>
+  
+    <updated>2025-04-08T12:00:00+02:00</updated>
+  
+    <id>https://drflamingoo.github.io/posts/new-desktop/</id>
+    <content type="text/html" src="https://drflamingoo.github.io/posts/new-desktop/" />
+    <author>
+      <name>dmjk</name>
+    </author>
+
+  
+    
+    <category term="Homelab" />
+    
+  
+
+  <summary>Building a new desktop computer, it was clear from the start, that I would never run Windows on that machine.  It was also clear, that a fairly powerful AMD CPU would power the system.  So I did the only sensible thing, and installed a gaming VM in a Proxmox Host.   My experience was a little bit of frickling, and a lot of good results, but let’s start at zero:  A Non-Windows gaming machine?  A...</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Managing Photography Images with ExifTools</title>
+    <link href="https://drflamingoo.github.io/posts/managing-photography-images-with-exiftools/" rel="alternate" type="text/html" title="Managing Photography Images with ExifTools" />
+    <published>2025-01-31T12:00:00+01:00</published>
+  
+    <updated>2025-01-31T12:00:00+01:00</updated>
+  
+    <id>https://drflamingoo.github.io/posts/managing-photography-images-with-exiftools/</id>
+    <content type="text/html" src="https://drflamingoo.github.io/posts/managing-photography-images-with-exiftools/" />
+    <author>
+      <name>dmjk</name>
+    </author>
+
+  
+    
+    <category term="Photography" />
+    
+  
+
+  <summary>By now, I have two Canon DSLR and one Canon SLR bodies, and have accumulated about 100k photos. There have been multiple strategies to manage this collection in the last 13 years. In fact, much of my hardware exists in order to host the files.  Lately, great self-hosting solutions to access your photos online have been created, and after some experimenting I have landed on immich. Here, I inclu...</summary>
+
+  </entry>
+
+</feed>
+
+
