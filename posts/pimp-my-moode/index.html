@@ -36,11 +36,11 @@
 <meta property="og:site_name" content="The Flamingoo" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2026-11-02T00:00:00+01:00" />
-<meta property="article:modified_time" content="2026-11-02T00:00:00+01:00" />
+<meta property="article:modified_time" content="2026-11-04T12:18:25+01:00" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Pimp My moOde" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-11-02T00:00:00+01:00","datePublished":"2026-11-02T00:00:00+01:00","description":"I’ve been running moOde on a trusty RaspberryPi Zero W plus the HiFiBerry DAC+ for ages. When I found out that the RPi0 is now unsupported by ArchlinuxARM, I got curious and realized that moOde also dropped support for it in the latest updates. Sure sign that an update to the RPi0 @ gen2 is in order :)","headline":"Pimp My moOde","mainEntityOfPage":{"@type":"WebPage","@id":"https://drflamingoo.github.io/posts/pimp-my-moode/"},"url":"https://drflamingoo.github.io/posts/pimp-my-moode/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-11-04T12:18:25+01:00","datePublished":"2026-11-02T00:00:00+01:00","description":"I’ve been running moOde on a trusty RaspberryPi Zero W plus the HiFiBerry DAC+ for ages. When I found out that the RPi0 is now unsupported by ArchlinuxARM, I got curious and realized that moOde also dropped support for it in the latest updates. Sure sign that an update to the RPi0 @ gen2 is in order :)","headline":"Pimp My moOde","mainEntityOfPage":{"@type":"WebPage","@id":"https://drflamingoo.github.io/posts/pimp-my-moode/"},"url":"https://drflamingoo.github.io/posts/pimp-my-moode/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -211,9 +211,16 @@
 
   
 
+  
+    
+
+    
+
+  
 
 
-  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3/dist/js/glightbox.min.js,npm/clipboard@2/dist/clipboard.min.js,npm/dayjs@1/dayjs.min.js,npm/dayjs@1/locale/en.js,npm/dayjs@1/plugin/relativeTime.js,npm/dayjs@1/plugin/localizedFormat.js,npm/tocbot@4/dist/tocbot.min.js"></script>
+
+  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3/dist/js/glightbox.min.js,npm/clipboard@2/dist/clipboard.min.js,npm/dayjs@1/dayjs.min.js,npm/dayjs@1/locale/en.js,npm/dayjs@1/plugin/relativeTime.js,npm/dayjs@1/plugin/localizedFormat.js,npm/tocbot@4/dist/tocbot.min.js,npm/mermaid@11/dist/mermaid.min.js"></script>
 
 
 
@@ -598,6 +605,29 @@
 
       <!-- lastmod date -->
       
+        <span>
+          Updated
+          <!--
+  Date format snippet
+  See: ${JS_ROOT}/modules/components/locale-datetime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1793791105"
+  data-df="ll"
+  
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+  
+>
+  Nov  4, 2026
+</time>
+
+        </span>
+      
 
       
 
@@ -643,7 +673,7 @@
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="582 words"
+  title="621 words"
 >
   <em>3 min</em> read</span>
 
@@ -679,37 +709,47 @@
 When I found out that the RPi0 is now unsupported by ArchlinuxARM, I got curious and realized that moOde also dropped support for it in the latest updates.
 Sure sign that an update to the RPi0 @ gen2 is in order :)</p>
 
-<p>Migrating was a breeze, since there is little to no configuration needed for moOde. However, with the help of genAI coding models, I figured I could pimp the experience a bit</p>
+<p>Migrating was a breeze, since there is little to no configuration needed for moOde. However, with the help of GenAI coding models, I figured I could pimp the experience a bit</p>
 
 <ul>
-  <li>add an NFC reader via SPI to read tags and cue playlists</li>
-  <li>design stickers for the NFC cards (credit-card shaped)</li>
-  <li>utilize the GPIO pins to talk to the IR remote ports of my Marantz amp.</li>
+  <li>Add an NFC reader via SPI to read tags and cue playlists</li>
+  <li>Design stickers for the NFC cards (credit-card shaped)</li>
+  <li>Utilize the GPIO pins to talk to the IR remote ports of my Marantz amp.</li>
 </ul>
 
 <h2 id="role-of-ai-assistants"><span class="me-2">Role of AI Assistants</span><a href="#role-of-ai-assistants" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>The genAI coding assistants actually made it a pleasant to iterate on the ideas; most of the time, it got me 80% there, with only little manual corrections (except for the sticker design).
+<p>The GenAI coding assistants actually made it a pleasant to iterate on the ideas; most of the time, it got me 80% there, with only little manual corrections (except for the sticker design).
 It also made research a lot easier as the LLM can convert even a badly put question into an expertly framed query.
 This way, “approximate knowledge of many things” is easily refined and distilled, and in the end one can pick up the trails and dive into rabbit holes oneself.</p>
 
 <h2 id="integration-into-the-homelab"><span class="me-2">Integration into the homelab</span><a href="#integration-into-the-homelab" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 <p>Now, what are those puzzle pieces and how do they come together?
-The central pieces are the services run on the RPi0 (moode, nfc listener &amp; mqtt event generator), Home Assistant (mqtt broker), and the music server (jellyfin).</p>
+The central pieces are the services run on the RPi0 (mooOde, NFC listener &amp; MQTT event generator), Home Assistant (MQTT broker), and the music server (jellyfin).</p>
 
-<div class="jekyll-diagrams diagrams mermaid">
-  <svg id="my-svg" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 571.016px; background-color: white;" viewBox="-244.00823974609375 -226.41720581054688 571.0164794921875 583.8344116210938" role="graphics-document document" aria-roledescription="architecture"><style>#my-svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#552222;}#my-svg .error-text{fill:#552222;stroke:#552222;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#333333;stroke:#333333;}#my-svg .marker.cross{stroke:#333333;}#my-svg svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#my-svg p{margin:0;}#my-svg .edge{stroke-width:3;stroke:#333333;fill:none;}#my-svg .arrow{fill:#333333;}#my-svg .node-bkg{fill:none;stroke:hsl(240, 60%, 86.2745098039%);stroke-width:2px;stroke-dasharray:8;}#my-svg .node-icon-text{display:flex;align-items:center;}#my-svg .node-icon-text&gt;div{color:#fff;margin:1px;height:fit-content;text-align:center;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;}#my-svg .node .neo-node{stroke:#9370DB;}#my-svg [data-look="neo"].node rect,#my-svg [data-look="neo"].cluster rect,#my-svg [data-look="neo"].node polygon{stroke:#9370DB;filter:drop-shadow(1px 2px 2px rgba(185, 185, 185, 1));}#my-svg [data-look="neo"].swimlane.cluster rect{filter:none;}#my-svg [data-look="neo"].node path{stroke:#9370DB;stroke-width:1px;}#my-svg [data-look="neo"].node .outer-path{filter:drop-shadow(1px 2px 2px rgba(185, 185, 185, 1));}#my-svg [data-look="neo"].node .neo-line path{stroke:#9370DB;filter:none;}#my-svg [data-look="neo"].node circle{stroke:#9370DB;filter:drop-shadow(1px 2px 2px rgba(185, 185, 185, 1));}#my-svg [data-look="neo"].node circle .state-start{fill:#000000;}#my-svg [data-look="neo"].icon-shape .icon{fill:#9370DB;filter:drop-shadow(1px 2px 2px rgba(185, 185, 185, 1));}#my-svg [data-look="neo"].icon-shape .icon-neo path{stroke:#9370DB;filter:drop-shadow(1px 2px 2px rgba(185, 185, 185, 1));}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g /><g class="architecture-edges"><g><path d="M -40.008235120668175,176.41721326495068 L 40.75000000000001,176.41721326495068 L121.50823512066819,176.41721326495068" class="edge" id="my-svg-L_mqtt_mqtt_broker_0" /></g><g><path d="M 161.5082351206682,136.41721326495068 L 161.5082351206682,57.000000000000014 L161.5082351206682,-22.417213264950647" class="edge" id="my-svg-L_mqtt_broker_jelly_0" /></g><g><path d="M 121.50823512066819,-62.41721326495065 L 40.75,-62.41721326495065 L-40.008235120668175,-62.41721326495065" class="edge" id="my-svg-L_jelly_moode_0" /></g></g><g class="architecture-services"><g id="my-svg-service-jelly" class="architecture-service" transform="translate(121.5082351206682,-102.41721326495065)"><g dy="1em" alignment-baseline="middle" dominant-baseline="middle" text-anchor="middle" transform="translate(40, 80)"><g><rect class="background" style="stroke: none" /><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">jellyfin</tspan></tspan></text></g></g><g><g><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><g><rect width="80" height="80" style="fill: #087ebf; stroke-width: 0px;" /><rect x="17.5" y="17.5" width="45" height="45" rx="2" ry="2" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="32.5" x2="62.5" y2="32.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="47.5" x2="62.5" y2="47.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><g><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g></g></svg></g></g></g><g id="my-svg-service-mqtt_broker" class="architecture-service" transform="translate(121.5082351206682,136.41721326495068)"><g dy="1em" alignment-baseline="middle" dominant-baseline="middle" text-anchor="middle" transform="translate(40, 80)"><g><rect class="background" style="stroke: none" /><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">mqtt</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> broker</tspan></tspan></text></g></g><g><g><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><g><rect width="80" height="80" style="fill: #087ebf; stroke-width: 0px;" /><rect x="17.5" y="17.5" width="45" height="45" rx="2" ry="2" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="32.5" x2="62.5" y2="32.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="47.5" x2="62.5" y2="47.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><g><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g></g></svg></g></g></g><g id="my-svg-service-moode" class="architecture-service" transform="translate(-120.00823512066819,-102.41721326495065)"><g dy="1em" alignment-baseline="middle" dominant-baseline="middle" text-anchor="middle" transform="translate(40, 80)"><g><rect class="background" style="stroke: none" /><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">moOde</tspan></tspan></text></g></g><g><g><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><g><rect width="80" height="80" style="fill: #087ebf; stroke-width: 0px;" /><rect x="17.5" y="17.5" width="45" height="45" rx="2" ry="2" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="32.5" x2="62.5" y2="32.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="47.5" x2="62.5" y2="47.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><g><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g></g></svg></g></g></g><g id="my-svg-service-mqtt" class="architecture-service" transform="translate(-120.00823512066819,136.41721326495068)"><g dy="1em" alignment-baseline="middle" dominant-baseline="middle" text-anchor="middle" transform="translate(40, 80)"><g><rect class="background" style="stroke: none" /><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">nfc-mqtt</tspan></tspan></text></g></g><g><g><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><g><rect width="80" height="80" style="fill: #087ebf; stroke-width: 0px;" /><rect x="17.5" y="17.5" width="45" height="45" rx="2" ry="2" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="32.5" x2="62.5" y2="32.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="47.5" x2="62.5" y2="47.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><g><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g></g></svg></g></g></g></g><g class="architecture-groups"><rect id="my-svg-group-lab" x="-204.0082351206682" y="-186.41721326495065" width="491.0164702413364" height="503.8344265299013" class="node-bkg" /><g><g transform="translate(-203.0082351206682, -185.41721326495065)"><g><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 80 80"><g><rect width="80" height="80" style="fill: #087ebf; stroke-width: 0px;" /><path d="m65,47.5c0,2.76-2.24,5-5,5H20c-2.76,0-5-2.24-5-5,0-1.87,1.03-3.51,2.56-4.36-.04-.21-.06-.42-.06-.64,0-2.6,2.48-4.74,5.65-4.97,1.65-4.51,6.34-7.76,11.85-7.76.86,0,1.69.08,2.5.23,2.09-1.57,4.69-2.5,7.5-2.5,6.1,0,11.19,4.38,12.28,10.17,2.14.56,3.72,2.51,3.72,4.83,0,.03,0,.07-.01.1,2.29.46,4.01,2.48,4.01,4.9Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /></g></svg></g></g><g dy="1em" alignment-baseline="middle" dominant-baseline="start" text-anchor="start" transform="translate(-170.0082351206682, -179.41721326495065)"><g><rect class="background" style="stroke: none" /><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">homelab</tspan></tspan></text></g></g></g><rect id="my-svg-group-pve" x="79.00823512066819" y="-144.91721326495065" width="165" height="182" class="node-bkg" /><g><g transform="translate(80.00823512066819, -143.91721326495065)"><g><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 80 80"><g><rect width="80" height="80" style="fill: #087ebf; stroke-width: 0px;" /><rect x="17.5" y="17.5" width="45" height="45" rx="2" ry="2" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="32.5" x2="62.5" y2="32.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="47.5" x2="62.5" y2="47.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><g><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g></g></svg></g></g><g dy="1em" alignment-baseline="middle" dominant-baseline="start" text-anchor="start" transform="translate(113.00823512066819, -137.91721326495065)"><g><rect class="background" style="stroke: none" /><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">proxmox</tspan></tspan></text></g></g></g><rect id="my-svg-group-ha" x="77.50823512066819" y="93.91721326495068" width="168" height="182" class="node-bkg" /><g><g transform="translate(78.50823512066819, 94.91721326495068)"><g><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 80 80"><g><rect width="80" height="80" style="fill: #087ebf; stroke-width: 0px;" /><rect x="17.5" y="17.5" width="45" height="45" rx="2" ry="2" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="32.5" x2="62.5" y2="32.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="47.5" x2="62.5" y2="47.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><g><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g></g></svg></g></g><g dy="1em" alignment-baseline="middle" dominant-baseline="start" text-anchor="start" transform="translate(111.50823512066819, 100.91721326495068)"><g><rect class="background" style="stroke: none" /><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">home</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> assistant</tspan></tspan></text></g></g></g><rect id="my-svg-group-rpi" x="-162.5082351206682" y="-144.91721326495065" width="165" height="420.8344265299013" class="node-bkg" /><g><g transform="translate(-161.5082351206682, -143.91721326495065)"><g><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 80 80"><g><rect width="80" height="80" style="fill: #087ebf; stroke-width: 0px;" /><rect x="17.5" y="17.5" width="45" height="45" rx="2" ry="2" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="32.5" x2="62.5" y2="32.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><line x1="17.5" y1="47.5" x2="62.5" y2="47.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 2px;" /><g><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,25c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,40c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: #fff; stroke-width: 0px;" /><path d="m56.25,55c0,.27-.45.5-1,.5h-10.5c-.55,0-1-.23-1-.5s.45-.5,1-.5h10.5c.55,0,1,.23,1,.5Z" style="fill: none; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="25" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="40" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g><g><circle cx="32.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="27.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /><circle cx="22.5" cy="55" r=".75" style="fill: #fff; stroke: #fff; stroke-miterlimit: 10;" /></g></g></svg></g></g><g dy="1em" alignment-baseline="middle" dominant-baseline="start" text-anchor="start" transform="translate(-128.5082351206682, -137.91721326495065)"><g><rect class="background" style="stroke: none" /><text y="-10.1" style=""><tspan class="text-outer-tspan row" x="0" y="-0.1em" dy="1.1em"><tspan font-style="normal" class="text-inner-tspan" font-weight="normal">RasPi</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> 0</tspan><tspan font-style="normal" class="text-inner-tspan" font-weight="normal"> W</tspan></tspan></text></g></g></g></g></svg>
-</div>
+<pre><code class="language-mermaid">architecture-beta
+    group lab(cloud)[homelab]
+    group pve(server)[proxmox] in lab
+    service jelly(server)[jellyfin] in pve
+    group ha(server)[home assistant] in lab
+    service MQTT_broker(server)[MQTT broker] in ha
+    group rpi(server)[RasPi 0 W] in lab
+    service moode(server)[moOde] in rpi
+    service MQTT(server)[nfc-MQTT] in rpi
+    MQTT:R -- L:MQTT_broker
+    MQTT_broker:T -- B:jelly
+    jelly:L -- R:moode
+</code></pre>
 
 <p>The NFC reader on the RPi0 is managed by a small python script, that translates read events into MQTT messages.
 These are sent to the MQTT broker running on Home Assistant, and are directly registered as Home Assistant tag events.
 These tag events can now be used to build automations to cue playlists.</p>
 
-<p>It is a bit round-about, but for now it is super flexible, works quite fast and can be expanded ad libidum.</p>
+<p>It is a bit round-about, but for now it is super flexible, works quite fast and can be expanded <em>ad libidum</em>.</p>
 
 <h2 id="nfc-cards"><span class="me-2">NFC cards</span><a href="#nfc-cards" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 <p>Now, I needed to make stickers for the NFC tags with the album art and a nice design.
-The solution is a folder with album art, a CSV containing all relevant data, and a latex template that pulls in the informations and creates a deck of cards.
+The solution is a folder with album art, a CSV containing all relevant data, and a LaTeX template that pulls in the information and creates a deck of cards.
 This can easily be printed with an online retailer focusing on VISA stickers for a nice finish.</p>
 
 <p>By the way, I’ll be putting SLIX-L tags on the Mifare classic tags in order to make the NFC library interoperable with the tonie box, so the kids can enjoy some <em>Papa music</em> as well.
@@ -720,12 +760,12 @@ Maybe there will be a special 3d printed holder with magnets, to make things eas
 moOde operates in the fixed volume mode, since it is hooked up to my stereo amplifier.
 That means, volume can only be changed by getting up or using the—otherwise useless—remote.
 The idea is to use the two IN/OUT remote ports of the amplifier, to talk to the stereo via software / GPIO signals.
-Then, the remote can be used for other things (skipping, etc), and the volume in MPD could directly control the physical volume knob on the amp.
+Then, the remote can be used for other things (skipping, etc.), and the volume in MPD could directly control the physical volume knob on the amp.
 At this point, there are a few issues to iron out:</p>
 <ul>
-  <li>pick gpio pins and do some soldering</li>
-  <li>write a lirq service (in / out)</li>
-  <li>interface with MPD/moOde for volume / skip / etc.</li>
+  <li>Pick GPIO pins and do some soldering</li>
+  <li>Write a LIRQ service (in / out)</li>
+  <li>Interface with MPD/moOde for volume / skip / etc.</li>
 </ul>
 
 <p>I guess this will be a second post.</p>
@@ -784,11 +824,6 @@ At this point, there are a few issues to iron out:</p>
           >nfc</a>
         
           <a
-            href="/tags/media-player/"
-            class="post-tag no-text-decoration"
-          >media player</a>
-        
-          <a
             href="/tags/gpio/"
             class="post-tag no-text-decoration"
           >gpio</a>
@@ -807,6 +842,11 @@ At this point, there are a few issues to iron out:</p>
             href="/tags/hardware/"
             class="post-tag no-text-decoration"
           >hardware</a>
+        
+          <a
+            href="/tags/jellyfin/"
+            class="post-tag no-text-decoration"
+          >jellyfin</a>
         
       </div>
     
@@ -911,6 +951,13 @@ At this point, there are a few issues to iron out:</p>
         
         
         <li class="text-truncate lh-lg">
+          <a href="/posts/managing-photography-images-with-exiftools/">Managing Photography Images with ExifTools</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
           <a href="/posts/proper-btrfs-root-partition-on-proxmox/">Proper BTRFS root partition on Proxmox</a>
         </li>
       
@@ -926,13 +973,6 @@ At this point, there are a few issues to iron out:</p>
         
         <li class="text-truncate lh-lg">
           <a href="/posts/new-desktop/">New Desktop</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/posts/managing-photography-images-with-exiftools/">Managing Photography Images with ExifTools</a>
         </li>
       
     </ul>
@@ -1373,10 +1413,10 @@ At this point, there are a few issues to iron out:</p>
         <a class="post-tag btn btn-outline-primary" href="/tags/home-assistant/">home assistant</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/linux-tools/">linux-tools</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/jellyfin/">jellyfin</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/lxc/">lxc</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/linux-tools/">linux-tools</a>
       
     </div>
   </section>
@@ -2000,10 +2040,10 @@ At this point, there are a few issues to iron out:</p>
         <a class="post-tag btn btn-outline-primary" href="/tags/home-assistant/">home assistant</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/linux-tools/">linux-tools</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/jellyfin/">jellyfin</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/lxc/">lxc</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/linux-tools/">linux-tools</a>
       
     </div>
   </section>

@@ -16,15 +16,19 @@ upgrade:
 	bundle update
 
 build:
+	rm -r DrFlamingoo.github.io/* || true
 	bundle exec \
 		jekyll build \
 			--destination DrFlamingoo.github.io
 serve:
 	# jekyll command
+	rm -r DrFlamingoo.preview/* || true
 	bundle exec \
 		jekyll serve \
-			--drafts \
+			--port 4004 \
 			--incremental \
+			--future \
+			--drafts \
 			--watch \
 			--livereload \
 			--destination DrFlamingoo.preview
